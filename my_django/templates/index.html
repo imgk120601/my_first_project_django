@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'base.html'%}
+{%load static%}
+
+	<!--<link rel="stylesheet"  href="{% static "css/static_css.css" %}"/>--><!--carreer me phtli baar link tag ko close kiya-->
+{% block body_block%}
+	<h1>This is heading of index.html in templates</h1>
+	<h2>This is template tag::</h2><br>{{my_template_tag|cut:'is'}}  <!--it is filter that cut out all 'is' from value left of pipe operator'|'-->   <!--{{my_template_tag}} this is comment in views-->
+	<br>
+
+	{{num_template|add:'99'}}<!--this is build in filter above filter is made by us ...add template tag in view.py-->
+
+	<h1>This doremon</h1><img src="{% static "images/doremon.jpg" %}" alt="My image">
+	<h1> Database using AccessRecord</h1>
+	{% if access_records%}    <!--if statement if acc_record present in the views-->
+		<table>
+			<thead>
+				<th>Site Name</th>
+				<th>Date Accessed</th>
+			</thead>
+			{% for acc in access_records%}
+				<tr>
+					<td>{{acc.name}}</td>
+					<td>{{acc.date}}</td>
+				</tr>
+			{% endfor%}
+		</table>
+	{% else%}
+		<p>No AccessRecord Found!!!!!</p>
+	{% endif%} <!--just to close the if statement if tag we started-->	
+{% endblock%}

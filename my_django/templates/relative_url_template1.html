@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+
+{%extends 'base.html'%} <!--please extends from base.html-->
+	{%block body_block%} 
+		<h1>This is relative url template1.html</h1>
+		<a href="{% url 'first_app:relative_url_template' %}">Go to relative_url_template</a><br><!--there should no space in ---'first_app:relative_url_template1'-->
+		<a href="{% url 'admin:index' %}">Go to admins's index</a><br><!--go to settings.py and see in installed app there is 'first_app'  and django.conf.admin-->
+		<a href="{% url 'index'%}">Go to index.html</a> <!--if index.html is home page it will take us back to home..-->
+			
+	{%endblock%}

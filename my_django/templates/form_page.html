@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is form page</title>
+</head>
+<body>
+	<h1>This is form page:</h1><!-- this is linked to my_temp() function in views.py-->
+	<form method="POST">
+		{{form.as_p}}<!-- this is template tagging for its value check view.py's my_temp() functions-->
+		<!-- first of all when we call my_temp() function method is not equal to 'POST' then it will return 'form' in form_page.html-->
+		<!-- then after filling the form method become equal to 'POST' then it execute code inside if tag in my_temp in view.pyd-->
+
+		 <!--this will make entry input in paragraphn meansn in vertical direction-->
+		{%csrf_token%}
+
+		<input type="submit" name="submit">		
+	</form>
+
+</body>
+</html

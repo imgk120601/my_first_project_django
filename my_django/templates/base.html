@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is base.html</title>
+	<!-- version----3.3.7---because udemy wale sir bhi ye hi use kar rhe hai-->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<nav class='navbar navbar-default  navbar-static-top'>
+		<div class='container'>
+			<ul class="nav navbar-nav">
+				<li><a class='navbar-brand' href="{% url 'index'%}">BRAND</a> </li><!--it is our home page not need special thing to link it -->
+				<li><a class="navbar-link" href="{% url 'admin:index'%}">ADMIN</a></li><!--it is our admin's index page-->
+				<li><a class="navbar-link" href="{% url 'first_app:other'%}">OTHER</a></li><!--here for linking template html file we need to use 'app_name=first_app' in urls.py (first_app)-->
+				<li><a class="navbar-link" href="{% url 'first_app:registration'%}">REGISTER</a></li><!--here for linking template html file we need to use 'app_name=first_app' in urls.py (first_app)-->
+				{% if user.is_authenticated%}
+				<li><a class="navbar-link" href="{% url 'first_app:user_logout'%}">LOG OUT</a></li>
+				{%else%}
+				<li><a class="navbar-link" href="{% url 'first_app:user_login'%}">LOG IN</a></li>		
+				{% endif%}		
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+		{%block body_block%}
+		<h1>This is base.html</h1><!--everything inside the the block will not be extends in other html-->
+								<!--we have extends only navbar in other.html, other htmls...-->
+
+		{%endblock%}
+		</div>
+	</div>
+
+</body>
+</html>
